@@ -14,7 +14,7 @@ let stack = new Stack();
 function useDataFetcher() {
   const [projects, setProjects] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/api/projects/", {
+    fetch("/api/projects/", {
       headers: {
         "x-auth-token": localStorage.token
       }
@@ -44,7 +44,7 @@ function deleteProject(id, username, projects, setProjects, setUndos) {
   if (result) {
     stack.insert(projects.filter(project => project._id === id));
     setUndos(stack);
-    let url = "http://localhost:5000/api/projects/" + id;
+    let url = "/api/projects/" + id;
     fetch(url, {
       headers: {
         "x-auth-token": localStorage.token
@@ -54,7 +54,7 @@ function deleteProject(id, username, projects, setProjects, setUndos) {
       let { projectTitle, deliveryDate } = projects.find(
         project => project._id === id
       );
-      let url = "http://localhost:5000/api/projects/deletion";
+      let url = "/api/projects/deletion";
       let body = { username, projectTitle, deliveryDate };
       fetch(url, {
         headers: {

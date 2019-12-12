@@ -44,7 +44,7 @@ function EditProject({ isAuthenticated, username, history, updateProject }) {
   let { projectTitle, projectDescription, deliveryDate } = formData;
   const onSubmit = async e => {
     e.preventDefault();
-    url = "http://localhost:5000/api/projects/" + id;
+    url = "/api/projects/" + id;
     fetch(url, {
       headers: {
         "Content-Type": "application/json",
@@ -117,8 +117,8 @@ function EditProject({ isAuthenticated, username, history, updateProject }) {
             required
             onChange={e => onChange(e)}
           ></textarea>
-          <input type="submit" className="btn btn-primary" value="Save" />
-          <a href="/projects" className="btn btn-danger">
+          <input type="submit" className="btn btn-dark" value="Save" />
+          <a href="/projects" className="btn btn-dark">
             Cancel
           </a>
         </form>

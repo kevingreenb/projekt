@@ -10,7 +10,7 @@ let loading = true;
 function useDataFetcher() {
   const [projects, setProjects] = useState([]);
   useEffect(() => {
-    url = "http://localhost:5000/api/projects/" + id;
+    url = "/api/projects/" + id;
     fetch(url, {
       headers: {
         "x-auth-token": localStorage.token
@@ -52,7 +52,7 @@ function Project({ isAuthenticated, username, history, updateProject }) {
   } = formData;
   const onSubmit = async e => {
     e.preventDefault();
-    url = "http://localhost:5000/api/projects/" + id;
+    url = "/api/projects/" + id;
     fetch(url, {
       headers: {
         "Content-Type": "application/json",
@@ -78,7 +78,7 @@ function Project({ isAuthenticated, username, history, updateProject }) {
 
   const postComment = async e => {
     let object = { post: { username: "Nala", text } };
-    url = "http://localhost:5000/api/projects/post/" + id;
+    url = "/api/projects/post/" + id;
     fetch(url, {
       headers: {
         "Content-Type": "application/json",
@@ -106,7 +106,7 @@ function Project({ isAuthenticated, username, history, updateProject }) {
     var result = window.confirm("Want to delete?");
     if (result) {
       let object = { postId };
-      url = "http://localhost:5000/api/projects/post/delete/" + id;
+      url = "/api/projects/post/delete/" + id;
       await fetch(url, {
         headers: {
           "Content-Type": "application/json",
